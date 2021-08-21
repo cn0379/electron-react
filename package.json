@@ -4,8 +4,7 @@
   "description": "",
   "main": "app/main/index.js",
   "scripts": {
-    "commitlint": "commitlint --config commitlint.config.js -e -V",
-    "prepare": "husky install",
+    "commit": "npx git-cz",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "concurrently \"npm run start:renderer\"  \"wait-on http://10.10.2.68:3000 && npm run start:main\"",
     "start:main": "electron .",
@@ -18,21 +17,28 @@
     "wait-on": "^6.0.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^13.1.0",
-    "@commitlint/config-conventional": "^13.1.0",
-    "commitizen": "^4.2.4",
-    "commitlint": "^13.1.0",
     "concurrently": "^6.2.1",
     "cross-env": "^7.0.3",
-    "cz-customizable": "^6.3.0",
+    "commitizen": "^4.2.4",
     "electron": "^13.2.1",
     "husky": "^7.0.1",
     "lint-staged": "^11.1.2"
   },
   "lint-staged": {
-    "*.{js,tsx}": [
+    "src/**/*.{js}": [
+      "eslint --fix",
       "git add"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   },
   "commitizen": {
     "path": "./node_modules/cz-customizable"
