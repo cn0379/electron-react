@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './app.css'
+import './peer-puppet.js'
+
 const { ipcRenderer } = window.require('electron')
 type propsType = {
 

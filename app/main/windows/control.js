@@ -1,7 +1,6 @@
 const {
     BrowserWindow
 } = require('electron')
-const isDev = require('electron-is-dev') //  区分开发还是生产环境
 const path = require('path')
 let win
 
