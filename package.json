@@ -4,7 +4,7 @@
   "description": "",
   "main": "app/main/index.js",
   "scripts": {
-    "rebuild": "npm rebuild --runtime=electron --target=13.2.1 --disturl=https://atom.io/download/atom-shell --abi=83",
+    "rebuild": "npm rebuild --runtime=electron --target=7.1.8 --disturl=https://atom.io/download/atom-shell --abi=51",
     "commit": "npx git-cz",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "concurrently \"npm run start:renderer\"  \"wait-on http://10.10.2.68:3000 && npm run start:main\"",
@@ -17,13 +17,14 @@
     "electron-is-dev": "^2.0.0",
     "robotjs": "^0.6.0",
     "vkey": "^1.0.1",
-    "wait-on": "^6.0.0"
+    "wait-on": "^6.0.0",
+    "ws": "^8.2.0"
   },
   "devDependencies": {
     "concurrently": "^6.2.1",
     "cross-env": "^7.0.3",
     "commitizen": "^4.2.4",
-    "electron": "^13.2.1",
+    "electron": "^7.1.8",
     "husky": "^7.0.1",
     "lint-staged": "^11.1.2"
   },

@@ -10,9 +10,10 @@ type propsType = {
 const App: React.FC<propsType> = (props) => {
     const [remoteCode, setRemoteCode] = useState('')
     const [localCode, setLocalCode] = useState('')
+     // 0未连接，1已控制，2被控制
     const [controlText, setControlText] = useState('')
     const login = async () => {
-        let code = await ipcRenderer.invoke('login')
+        let  code = await ipcRenderer.invoke('login')
         setLocalCode(code)
     }
     useEffect(() => {
@@ -29,6 +30,8 @@ const App: React.FC<propsType> = (props) => {
             text = `正在控制远程${name}`
         } else if (type === 2) {
             text = `被${name}控制中`
+        }else {
+            text = ''
         }
         setControlText(text)
     }

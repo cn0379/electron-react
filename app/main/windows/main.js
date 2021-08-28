@@ -2,7 +2,6 @@ const {
     BrowserWindow
 } = require('electron')
 const isDev = require('electron-is-dev') //  区分开发还是生产环境
-const path = require('path')
 let win
 
 function create() {
@@ -16,9 +15,7 @@ function create() {
     })
     if (isDev) {
         win.loadURL('http://localhost:3000')
-    } else {
-        win.loadFile(path.resolve(__dirname, '../renderer/pages/main/index.html'))
-    }
+    } 
 }
 
 function send(channel,...args) {

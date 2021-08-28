@@ -6,10 +6,10 @@ const vkey = require('vkey')
 
 function handleMouse(data) {
   let {
-    clientX,
-    clientY,
-    screen,
-    video
+      clientX,
+      clientY,
+      screen,
+      video
   } = data
   // data {clientX, clientY, screen: {width, height}, video: {width, height}}
   let x = clientX * screen.width / video.width
@@ -28,17 +28,17 @@ function handleKey(data) {
   if (data.ctrl) modifiers.push('ctrl')
   let key = vkey[data.keyCode].toLowerCase()
   if (key[0] !== '<') { //<shift>
-    robot.keyTap(key, modifiers)
+      robot.keyTap(key, modifiers)
   }
 }
 
 module.exports = function () {
   ipcMain.on('robot', (e, type, data) => {
-    console.log('handle', type, data)
-    if (type === 'mouse') {
-      handleMouse(data)
-    } else if (type === 'key') {
-      handleKey(data)
-    }
+      console.log('handle', type, data)
+      if (type === 'mouse') {
+          handleMouse(data)
+      } else if (type === 'key') {
+          handleKey(data)
+      }
   })
 }

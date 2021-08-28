@@ -18,6 +18,12 @@ function create() {
     win.loadFile(path.resolve(__dirname, '../../renderer/pages/control/index.html'))
 }
 
+function send(channel,...args) {
+    // 主进程和渲染进程通信需要拿到webContents 然后调用send方法
+    win.webContents.send(channel,...args)
+}
+
 module.exports = {
-    create
+    create,
+    send
 }
