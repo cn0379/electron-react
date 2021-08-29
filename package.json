@@ -4,6 +4,8 @@
   "description": "",
   "main": "app/main/index.js",
   "scripts": {
+    "build":"cd app/renderer/src/main  && npm run build",
+    "pack:win": "npm run build && electron-builder --win32 --ia32",
     "rebuild": "npm rebuild --runtime=electron --target=7.1.8 --disturl=https://atom.io/download/atom-shell --abi=51",
     "commit": "npx git-cz",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -21,13 +23,17 @@
     "ws": "^8.2.0"
   },
   "devDependencies": {
+    "commitizen": "^4.2.4",
     "concurrently": "^6.2.1",
     "cross-env": "^7.0.3",
-    "commitizen": "^4.2.4",
     "electron": "^7.1.8",
+    "electron-builder": "^22.3.2",
+    "electron-builder-squirrel-windows": "^22.13.1",
+    "fs-extra": "^10.0.0",
     "husky": "^7.0.1",
     "lint-staged": "^11.1.2"
   },
+  "homepage": "./",
   "lint-staged": {
     "src/**/*.{js}": [
       "eslint --fix",
@@ -46,5 +52,18 @@
   },
   "commitizen": {
     "path": "./node_modules/cz-customizable"
+  },
+  "build":{
+    "appid":"zsl",
+    "productName":"zsl1.1",
+    "files":"app",
+    "asar": false,
+    "extraFiles":[
+      "app/renderer/**/src"
+    ],
+    "directories":{
+      "buildResources":"resource",
+      "output":"relase"
+    }
   }
 }
