@@ -1,3 +1,4 @@
+// 这个是ws
 const WebSocket = require('ws');
 const wss = new WebSocket.Server({ port: 8010 });
 const code2ws = new Map()
